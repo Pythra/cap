@@ -1,0 +1,29 @@
+    <div style="float:right" class="mb-2">
+          {% if request.user.is_authenticated %}
+            <a href="{% url 'logout'%}?next={{ request.path}}">
+                <span class="navmain btn btn-sm btn-danger">Logout</span>
+            </a>
+          {% else %}
+            <a href="{% url 'signup'%}">
+                <button class="btn btn-sm btn-warning mr-2"><b>Register</b></button>
+            </a>
+            <a href="{% url 'login'%}?next={{ request.path}}"  >
+                <button class="btn btn-sm btn-info">Login</button>
+            </a>
+          {% endif %}
+    </div><br>
+<small>
+    About <br>
+    Contact us<br>
+    FAQ<br>
+    Donate<br>
+    Contact developer<br><br>
+</small>
+
+    <center>
+
+        <small>
+            <i class="fa fa-map-marker"></i> Creston, YellowStone, Canada<br>
+        </small>
+    <small class="mb-1 relative-bottom">2020 &#169 Copyright Capital Phoenix</small>
+    </center>

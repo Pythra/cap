@@ -1,0 +1,37 @@
+{% extends 'capping/base.html' %}
+{% block title %}
+
+#loginbox{width:85%; border:1px solid whitesmoke;
+                        padding:10px; box-shadow:inset 3px 5px 7px whitesmoke, 3px 5px 7px grey; border-radius:12px;}
+
+#login{border:none; border-radius:30px;background-color:whitesmoke; padding:6px;}
+  #milklogin{ font-weight:600}
+{% endblock %}
+{% block content %}
+{% if form.errors %}
+    <p class="text-danger mt-4" style="font-size:15px; float:center;">Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+    <center class="my-5">
+<div id="loginbox">
+    <span style="position:relative"><small>Login to</small> <span id="milklogin">Capital Phoenix</span></span>
+<form method="post" action="{% url 'login' %}" class="form-group" >
+    {% csrf_token %}
+  <br>
+    <input placeholder="{{ form.username.html_name }}" id="login" class="{% if forloop.last %}mt-4{% endif %} w-100"
+           type="text" name="{{ form.username.html_name }}">
+    <input placeholder="{{ form.password.html_name }}" id="login" class="mt-4 w-100"
+           type="password" name="{{ form.password.html_name }}">
+  <small class="pull-right mb-4"><a href="{% url 'password_reset' %}">Lost password?</a></small>
+  <div class="text-center">
+     <input type="submit" class="btn btn-sm w-100 mb-1" style="background-color:black; color:white" value="Login">
+   <input type="hidden" name="next" value="{{ next }}">
+ </div>
+</form>
+   <a href="{% url 'signup' %}">
+       <button class="btn btn-sm btn-outline-danger w-100 " style=" border-radius:30px;"><b>sign up</b></button>
+   </a>
+</div>
+    </center>
+
+{% endblock %}

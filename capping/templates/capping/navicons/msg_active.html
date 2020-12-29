@@ -1,0 +1,30 @@
+
+<style>
+  .icon{ font-size:23px; color:grey}
+       </style>
+<div style="height:50px; padding:13px; background-color:whitesmoke; width:100%;position:fixed;bottom:0;"
+     class="navbar d-flex justify-content-between">
+<a href="{% url 'home' %}">
+  <i class="fa fa-dashboard icon"></i>
+</a>
+
+<a href="{% url 'trade' %}">
+  <i class="fa fa-dollar icon"></i>
+</a>
+<a href="{% url 'chat:room' 1 %}">
+  <i class="fa fa-envelope-o icon" style="color:black; position:relative"></i>
+    {% if unseen %}
+    <span style="width:14px; height:14px;  background-color:red; color:white; left:10px;
+        font-size:10px; border:none; display:inline-block; border-radius:50%; position:absolute;">
+        <center>{{ unseen.count }}</center>
+    </span>
+    {% endif %}
+</a>
+<a href="#">
+  <i class="fa fa-bell-o icon"></i>
+</a>
+<a href="{% url 'settings' %}">
+  <i class="fa fa-gear icon"></i>
+</a>
+
+</div>

@@ -1,0 +1,24 @@
+{% extends 'capping/base.html' %}
+{% block title %}
+.title{margin-bottom: 8px;}
+#choose{ margin-top:4px;}
+{% endblock %}
+{% block content %}
+<div class="container">
+<h5 class="my-4">Create A Post</h5>
+      <form method="post" class="form-group" enctype="multipart/form-data">
+    {% csrf_token %}
+
+          <div class="form-group">
+              {{ form.title }}
+              <div class="invalid-feedback">Enter valid text for post headline</div>
+          </div>
+         {{ form.content }}
+              <span id="choose">{{ form.post_pic }}</span>
+          <p >
+              <button type="submit" class="btn btn-md btn-danger my-3" id="widmob">Submit</button>
+          </p>
+      </form>
+</div>
+{% include 'capping/navicons/dash_active.html' %}
+{% endblock %}

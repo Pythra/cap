@@ -1,0 +1,84 @@
+{% block small_carousel %}
+ {% load static %}
+<style>
+
+#carousel-card{width:80%; height:200px; border-radius:26px; }
+#car-pic{
+        float:left;
+        height:180px;
+        border:1px; border-radius:25px 3px 0px 25px;
+        background-repeat:no-repeat;
+       }
+#car-text{ color:grey; font-size:16px;}
+#vuebox{border: 1px solid red; height:40px; width:60px; }
+
+
+#carousel-card-sm{width:95%; height:auto; border-radius:10px; border:none;}
+#car-pic-sm{width:100%;
+        border:1px;
+        background-repeat:no-repeat;
+       }
+#car-text-sm{ color:white; font-size:15px; border:none; height:30px; background-color:black; display:none}
+  .infoHandle{
+  overflow: auto; overflow-y: hidden;
+  white-space: nowrap; display:block
+}
+
+#navicons-sm{ height:40px; width:100%; padding:3px; border-bottom:1px solid #E0BDB7; overflow:scroll; white-space:nowrap;
+                line-spacing:0.4em;}
+#top-icon-sm{font-size:22px; color:dimgray; margin-right:69px;}
+#lasticon-sm{font-size:26px; color:dimgray;}
+</style>
+ {% load static %}
+
+  <center class="mt-3">
+      <span style="color:black; font-size:17px;">Welcome to</span>
+      <h5 class="head" style="display:inline-block">Capital Phoenix</h5>
+<div id="carouselExampleControls" class="carousel slide my-3" data-ride="carousel"
+     style="background-image:url('{% static 'capping/bitcoins.jpeg' %}');padding:20px;
+                         font-weight:600; text-align:center; font-size:20px; color:white; border:10px solid:gold">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <div id="carousel-card-sm">
+<div id="car-pic-sm" >
+    <span style="background-color:black; padding:2px; font-size:17px">
+        Capital Phoenix provides an easy-to-use trading platform for crytocurrencies.
+    </span>
+</div>
+    </div>
+    </div>
+
+
+    <div class="carousel-item">
+        <div id="carousel-card-sm">
+            <div>
+    <span style="background-color:black; padding:2px; font-size:17px">
+        Make money from the comfort of your home.
+    </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="carousel-item">
+        <div id="carousel-card-sm">
+            <div>
+    <span style="background-color:black; padding:2px; font-size:17px">
+        Make money from the comfort of your home.
+    </span>
+            </div>
+        </div>
+    </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+  </div>
+</div>
+
+</center>
+
+{% endblock %}

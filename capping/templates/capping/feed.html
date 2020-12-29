@@ -1,0 +1,26 @@
+<style>
+  .icon{ font-size:23px; color:grey}
+  #ann_box{diaplay:block;font-size:13px; border:none; background-color:bisque; padding:4px;
+            width:95%; border-radius:0 0 6px 6px ;}
+  #red{color:white; font-size:13px;height:20px; background-color:red; width:95%;
+            border-radius:6px 6px 0 0; margin-top:10px; padding:1px; letter-spacing:0.1em;}
+</style>
+  {% include 'capping/nav/slide.html' %}
+{% if ann %}
+  {% for an in ann %}
+<center class="mt-2">
+  <div id="red">
+    NOTICE!!!
+  </div>
+<div id="ann_box" class="mb-2">
+      {{an.body}}
+    </div>
+</center>
+{% endfor %}
+{% endif %}
+<div class="container mt-3">
+<span style="font-size:12px; margin-left:4px; font-weight:600; color:brown">LATEST NEWS</span><br>
+  {% include 'capping/general_post_list.html' %}
+
+</div>
+{% include 'capping/navicons/dash_active.html' %}

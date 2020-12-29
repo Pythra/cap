@@ -1,0 +1,40 @@
+<style>
+#list-headings{ font-weight:650; color:blue; display:block; margin-top: 10px;}
+</style>
+{% load static %}
+    <center class="my-3">
+  <span style="font-size:17px">Why choose</span>
+        <h5 class="head" style="display:inline-block">Capital Phoenix?</h5>
+
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <div id="list-headings">24/7 customer care services</div>
+        <img  class="my-2" id="inpic" src="{% static 'capping/coscare.jpeg' %}"><br>
+    </div>
+    <div class="carousel-item">
+        <div id="list-headings">Live updates on cryptocurrency values</div>
+        <img  class="my-2" id="inpic" src="{% static 'capping/meeting.jpeg' %}"><br>
+    </div>
+    <div class="carousel-item">
+        <div id="list-headings">Get trading tips from experts</div>
+        <img  class="my-2" id="inpic" src="{% static 'capping/flen.jpeg' %}"><br>
+
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+    </center>

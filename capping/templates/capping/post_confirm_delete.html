@@ -1,0 +1,10 @@
+
+  <h1>Delete Post</h1>
+
+<p>Are you sure you want to delete the book: {{ post }}?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Yes, delete.">
+</form>
+{% include 'capping/navicons/dash_active.html' %}

@@ -1,0 +1,23 @@
+<style>
+
+@media( min-width:768px)
+{#post_pic{width:90px; max-height:90px; float:right;
+    margin-right: 8px;
+        }}
+
+
+@media( max-width:768px)
+{
+#date{display: none;}
+        }
+
+#date{ float: right; color:gray; font-size:22px; font-family:"baloo da 2";}
+
+#postpic{width:60px; max-height:40px; float:right;
+    margin-right: 8px;}
+
+#plus{color:magenta; font-size:70px; margin:0 50px 0 290px;}
+</style>
+<ul class="list-group my-3" style="">
+        {% include 'capping/general_post_list.html' %}
+</ul>

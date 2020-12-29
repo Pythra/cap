@@ -1,0 +1,16 @@
+{% extends 'capping/base.html' %}
+{% block title %}
+{% endblock %}
+{% block content %}
+<div style="font-size:14px;">
+<br>
+  <h5>Edit Post</h5>
+<br>
+<form action="" method="POST" class="form-group">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" class="btn btn-info btn-md w-80  text-center" value="Update">
+</form>
+</div>
+{% include 'capping/navicons/dash_active.html' %}
+{% endblock %}

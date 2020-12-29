@@ -1,0 +1,64 @@
+<style>
+
+.titbox{width:100px; border: none; height:100px;  display:inline-block; background-color:whitesmoke;
+            border-radius:50%; text-align:center; font-size:12px; margin:4px 3px 3px 3px; padding-top:22px;
+         box-shadow:3px 3px 3px grey; margin-right:10px;}
+
+            </style>
+{% include 'capping/nav/nav.html' %}
+{% if user.is_authenticated %}
+<center class="mt-3">
+    <div class="container row">
+        <div class="col-4">
+            <span style="font-size:10px"> My Balance</span>
+            <br>${{ request.user.profile.balance }}
+        </div>
+        <div class="col-8 mt-2">
+            {% if request.user.is_superuser %}
+                <a href="{% url 'announcement_form' %}">
+                  <button class="btn btn-dark btn-sm ml-1">
+                      Deposit
+                  </button>
+                  <button class="btn btn-dark btn-sm ml-1">
+                      Withdraw
+                  </button>
+                </a>
+            {% else %}
+                <a href="{% url 'announcement_form' %}">
+                  <button class="btn btn-danger btn-sm ml-1" style="border-radius:60px;">Make a deposit</button>
+                </a>
+
+            {% endif %}
+        </div>
+    </div>
+</center>
+    {% endif %}
+
+<hr>
+
+    <center>
+<div class="container row my-2 ml-2">
+<small>Select your preferred crypto currency</small>
+{% for dat in coins %}
+  {% if forloop.first %}
+    <div class="row">
+  {% endif %}
+    <div class="titbox">
+    {{dat.name | upper}}<br>
+        ${{ dat.quote.USD.price | floatformat:4 }}<br>
+        <span style="{% if dat.quote.USD.percent_change_1h > 0 %}color:green;{% else %}color:red;{% endif %}">
+            %{{ dat.quote.USD.percent_change_1h | floatformat:2  }}
+        </span><br>
+    </div>
+{% if forloop.counter|divisibleby:3 %}
+    </div>
+
+  <div class="row">
+{% endif %}
+{% if forloop.last %}
+</div>
+{% endif %}
+{% endfor %}
+</div>
+    </center>
+{% include 'capping/navicons/trade_active.html' %}

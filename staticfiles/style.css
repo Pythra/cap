@@ -1,0 +1,19 @@
+#list-headings{ font-weight:650; color:blue; display:block; margin-top: 10px;}
+#instruction{color:grey;}
+
+#navicons-sm{ height:40px; width:100%; padding:3px; border-bottom:1px solid #E0BDB7; overflow:scroll; white-space:nowrap;
+                line-spacing:0.4em;}
+#top-icon-sm{font-size:22px; color:dimgray; margin-right:69px;}
+#lasticon-sm{font-size:26px; color:dimgray;}
+#slide-box{height:40px; width:100%}
+#car-pic-sm{width:100%;
+        border:1px;
+        background-repeat:no-repeat;
+       }
+
+#inpic{width:100%;
+        border:1px;
+        background-repeat:no-repeat;
+       }
+        .green{color:green}
+        .head{color:red; font-weight:600; }

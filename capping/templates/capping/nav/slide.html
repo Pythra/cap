@@ -1,0 +1,47 @@
+<style>
+.bitbox{width:76px; border: none; height:93%;  display:inline-block; background-color:whitesmoke;
+            border-radius:40px; text-align:center; font-size:12px; margin:4px 3px 3px 3px; padding:3px;
+            box-shadow: inset 3px 3px 3px lightgrey; color:grey}
+#slide-box{height:72px; width:100%; color:black;
+                    display:inline-block; overflow:scroll; border-top:1px solid black;
+                    white-space:nowrap; overflow-x:scroll; overflow-y:hidden;}
+</style>
+<div id="slide-box">
+{% for dat in coins %}
+    <div class="bitbox">
+    {{dat.symbol }}<br>
+        ${{ dat.quote.USD.price | floatformat:4 }}<br>
+        <span style="{% if dat.quote.USD.percent_change_1h > 0 %}color:green;{% else %}color:red;{% endif %}">
+            %{{ dat.quote.USD.percent_change_1h | floatformat:2  }}
+        </span>
+    </div>
+{% endfor %}
+</div>
+{% if user.is_authenticated %}
+<hr style="margin:3px; !important">
+<center>
+    <div class="container row">
+        <div class="col-4">
+            <span style="font-size:10px"> My Balance</span>
+            <br>${{ request.user.profile.balance }}
+        </div>
+        <div class="col-8 mt-2">
+            {% if request.user.is_superuser %}
+                <a href="{% url 'announcement_form' %}">
+                  <button class="btn btn-danger btn-sm ml-1" style="border-radius:60px;">
+                      Make announcement
+                  </button>
+                </a>
+            {% else %}
+                <a href="{% url 'announcement_form' %}">
+                  <button class="btn btn-danger btn-sm ml-1" style="border-radius:60px;">Make a deposit</button>
+                </a>
+
+            {% endif %}
+        </div>
+    </div>
+
+
+</center>
+    {% endif %}
+<hr style="margin-top:3px; !important">

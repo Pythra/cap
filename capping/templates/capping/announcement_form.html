@@ -1,0 +1,13 @@
+{% extends 'capping/base.html' %}
+{% block title %}
+{% endblock %}
+{% block content %}
+
+<h5 class="mt-3 text-center">Make an announcement</h5>
+<form method="POST" class="form-group" style="font-size:14px">
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit" class="btn btn-danger btn-sm" value="Post">
+</form>
+
+{% endblock %}

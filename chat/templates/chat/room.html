@@ -1,0 +1,58 @@
+{% extends 'capping/base.html' %}
+{% block title %}
+#tb{width:100%; border-radius:10px; border:1px solid grey;font-size:14px}
+.chat_box{width:auto;
+                        padding:4px 7px 4px 7px;
+                        border-radius:20px;
+                        background-color:bisque; font-size:14px;
+      }
+.status{font-size:11px; color:gray; display:block}
+#mbox{font-size:13px; bottom:0; position:fixed; height:50px; border:none; width:100%}
+{% endblock %}
+{% block content %}
+<div style="height:70%">
+<h4 class="text-center">
+    Chat with {{ other }}
+    <img src="{{ other.profile.dp }}">
+</h4>
+<ul  class="list-group h-70">
+    {% for msg in messages %}
+    <li class="list-group-item {% if forloop.last %}mb-5{% endif %}" style="border:none; width:100%; padding-top:0;!important
+; padding-bottom:0;!important">
+ {% if forloop.last %}<a name="last">{% endif %}
+        <div class="chat_box {% if msg.user1 == request.user %} pull-right {% else %}pull-left{%  endif %} mb-3"
+            style="{% if msg.user2 == request.user %} background-color:brown; color:white; {%  endif %} max-width:70%;
+            {% if forloop.last %}margin-bottom:100px;{% endif %}">
+            {{ msg.content }}<br>
+            {% if msg.chat_pic %}
+            <center>
+                <img src="{{ msg.chat_pic.url }}" style="max-width:66%; ">
+            </center>
+            {% endif %}
+        </div><br>
+        {% if msg.user1 == request.user  and forloop.last %}
+            <div class="status {% if msg.user1 == request.user %} pull-right {% else %}pull-left{%  endif %} mt-1">
+                {{ msg.status }}
+            </div>
+        {% endif %}<br>
+        {% if forloop.last %}<span class="status {% if msg.user1 == request.user %} pull-right {% else %}pull-left{%  endif %}">
+            {{ msg.created_on | timesince }} ago
+        </span>
+        {% endif %}
+</a>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+
+<div class="container">
+<form method="post" class="form-group" enctype="multipart/form-data" style="font-size:14px">
+    {% csrf_token %}
+    <textarea id="tb" name="{{ form.content.html_name }}" class="form-control mb-1"></textarea>
+    {{ form.chat_pic }}
+    <button class="btn btn-primary btn-sm pull-right" type="submit" >
+                send
+            </button>
+</form>
+</div>
+{% endblock %}

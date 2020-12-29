@@ -1,0 +1,73 @@
+{% extends 'capping/base.html' %}
+{% block title %}
+@media( min-width:768px)
+{#postpic {float:left:}}
+@media( max-width:768px)
+{#postpic {max-width:100%;}
+      #comment{width:100%;}
+        #commenter{font-size:10px;}
+      }
+
+
+#postpic{ max-width: auto ; max-height:300px; margin-top:10px;}
+
+
+
+#commenter{font-size:13px; font-weight:649;
+                margin-left:3px;
+                text-transform:capitalize;
+                 color: brown;}
+
+
+#creator{text-transform:uppercase; color:purple;}
+
+#comment_time{float: right;font-family:"baloo da 2"; color:brown;}
+  #title{font-family:"times new roman";}
+ #pos-pic{margin-top:19px;
+       height:10pt; width:10pt;
+        border-radius:50%;
+       background-repeat:no-repeat;
+       background-size:cover;
+       }
+
+{% endblock %}
+
+
+{% block content %}
+  {% load static %}
+<div class="container" style="padding:4px">
+    <h5 class="text-center my-3" id="title">{{ post.title }}</h5>
+    <span style="font-size:13px;" class="ml-1 text-muted">
+        By <a href="#"><b id="creator">{{ post.creator }}</b></a>
+    </span> <br>
+    <small style="font-size:12px;" class="text-muted ml-1"><i class=" fa fa-calendar"></i> {{ post.created_on }}</small>
+
+
+<hr>
+<blockquote>
+    <small id="combody">{{ post.content }}</small>
+    {% if post.post_pic %}
+      <img src="{{ post.post_pic.url }}" id="postpic">
+    {% endif %}
+</blockquote>
+       {% if request.user == post.creator %}
+    <span style="float:right">
+    <a href="{% url 'post_update' post.slug %}">
+      <i style="font-size:23px;" class="fa fa-pencil-square-o ml-5  text-muted"></i>
+    </a>
+    <a href="{% url 'post_confirm_delete' post.slug %}?next={{ request.path}}">
+      <i style="font-size:23px;" class="fa fa-trash-o mx-1 text-muted" aria-hidden="true"></i>
+    </a>
+    </span>
+    {% endif %}
+</div>
+<div class="container-fluid" style="padding:6px">
+{% if comments %}
+        {% block comment_list %}{% include 'milk/includes/comment_list.html' %}{% endblock %}
+{% endif %}
+</div>
+
+<div class="mt-5 mx-1" style="font-size:14px;">
+</div>
+{% include 'capping/navicons/dash_active.html' %}
+{% endblock %}

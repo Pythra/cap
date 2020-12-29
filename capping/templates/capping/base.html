@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <title>Capital phoenix Homepage</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Da+2" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style>
+@media( min-width:768px)
+{
+.for_bg{display: none;}
+        }}
+
+
+@media( max-width:768px)
+{
+.for_bg{display: none;}
+        }
+#inpic{width:100%;
+        border:1px;
+        background-repeat:no-repeat;
+       }
+        .green{color:green}
+        .head{color:red; font-weight:600; }
+{% block title %}{% endblock %}
+</style>
+  {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'capping/style.css' %}">
+</head>
+<body >
+{% include 'capping/nav/nav.html' %}
+
+            {% block content %}
+{% endblock %}
+
+
+</body>
+{% if user.not_authenticated %}
+<footer class="mt-5 text-light" style="height:250px; background-color:chocolate; padding:15px; padding-bottom:25px;">
+
+        {% include 'capping/includes/foot.html' %}
+
+</footer>
+{% endif %}
+</html>

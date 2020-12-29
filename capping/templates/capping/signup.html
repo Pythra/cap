@@ -1,0 +1,40 @@
+{% extends 'capping/base.html' %}
+{% block title %}
+#loginbox{width:85%; border:1px solid whitesmoke;
+                        padding:10px; box-shadow:inset 3px 5px 7px whitesmoke, 3px 5px 7px grey; border-radius:12px;}
+
+#login{border:none; border-radius:30px;background-color:whitesmoke; padding:6px;;}
+#login{border:none; border-radius:30px;background-color:whitesmoke; padding:6px;;}
+  #milklogin{ font-weight:600}
+#logbtn{border:2px solid black; font-weight:bold}
+#logbtn:focus{border:2px solid purple; color:white; font-weight:bold; background-color:purple;}
+{% endblock %}
+{% block content %}
+{% if form.errors %}
+    <p class="text-danger mt-4" style="font-size:15px; float:center;">Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+    <center class="my-3">
+    <p style="position:relative"><small>Signup to</small> <span id="milklogin">Capital Phoenix</span></p>
+<div id="loginbox" class="mt-2">
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="{{ form.username.html_name }}" placeholder="{{ form.username.html_name }}" id="login" class="w-100 mt-2">
+    <input type="text" name="{{ form.email.html_name }}" placeholder="{{ form.email.html_name }}" id="login" class="mt-4 w-100">
+    <input type="password" name="{{ form.password1.html_name }}" placeholder="{{ form.password1.html_name }}" id="login" class="mt-4 w-100">
+    <input type="password" name="{{ form.password2.html_name }}" placeholder="{{ form.password2.html_name }}" id="login" class="mt-4 w-100">
+  <div class="text-center mt-3">
+   <a href="{% url 'signup' %}">
+       <button type="submit" class="btn btn-sm btn-danger w-100 " style=" border-radius:30px;">sign up</button>
+   </a>
+ </div>
+</form>
+    <br>
+            <a href="{% url 'login'%}?next={{ request.path}}" >
+     <input type="submit" class="btn btn-sm w-100 mb-1" id="logbtn" value="Login">
+            </a>
+   <input type="hidden" name="next" value="{{ next }}">
+</div>
+    </center>
+
+{% endblock %}
