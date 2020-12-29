@@ -26,7 +26,7 @@ SECRET_KEY = 's8!zw%6!-)*omxlkj83j^^+*@dhkfv)55f@h7)vdh$zn2b1b3&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['capitalphoenix.herokuapp.com']
 
 
 # Application definition
@@ -117,10 +117,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
@@ -131,3 +127,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+
